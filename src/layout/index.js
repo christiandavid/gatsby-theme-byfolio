@@ -1,8 +1,11 @@
 import React from "react"
 import { css } from "@emotion/core"
-import { useStaticQuery, Link, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 import { rhythm } from "../utils/typography"
+import Menu from "../components/menu"
+
 export default ({ children }) => {
   const data = useStaticQuery(
     graphql`
@@ -18,13 +21,17 @@ export default ({ children }) => {
   return (
     <div
       css={css`
-        margin: 0 auto;
-        max-width: 700px;
         padding: ${rhythm(2)};
-        padding-top: ${rhythm(1.5)};
+        padding-top: ${rhythm(3.5)};
       `}
     >
-      <Link to={`/`}>
+      <Menu
+        numPoints={18}
+        duration={600}
+        delayPointsMax={300}
+        delayPerPath={100}
+      />
+      <AniLink cover to="/" direction="right" bg="#000">
         <h3
           css={css`
             margin-bottom: ${rhythm(2)};
@@ -34,16 +41,15 @@ export default ({ children }) => {
         >
           {data.site.siteMetadata.title}
         </h3>
-      </Link>
-      <Link
-        to={`/about/`}
+      </AniLink>
+      <div
         css={css`
-          float: right;
+          position: relative;
+          z-index: 0;
         `}
       >
-        About
-      </Link>
-      {children}
+        {children}
+      </div>
     </div>
   )
 }

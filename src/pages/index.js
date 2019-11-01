@@ -1,37 +1,24 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import { css } from "@emotion/core"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { rhythm } from "../utils/typography"
-import Layout from "../components/layout"
 
 export default ({ data }) => {
   return (
-    <Layout>
+    <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>My Title</title>
+        <title>Christian Ibarguen</title>
         <link rel="canonical" href="http://mysite.com/example" />
+        <body className="no-js" />
       </Helmet>
       <div>
-        <h1
-          css={css`
-            display: inline-block;
-            border-bottom: 1px solid;
-          `}
-        >
-          Amazing Pandas Eating Things
-        </h1>
         <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <div key={node.id}>
-            <Link
-              to={node.fields.slug}
-              css={css`
-                text-decoration: none;
-                color: inherit;
-              `}
-            >
+            <AniLink cover to={node.fields.slug} direction="left" bg="#000">
               <h3
                 css={css`
                   margin-bottom: ${rhythm(1 / 4)};
@@ -47,11 +34,11 @@ export default ({ data }) => {
                 </span>
               </h3>
               <p>{node.excerpt}</p>
-            </Link>
+            </AniLink>
           </div>
         ))}
       </div>
-    </Layout>
+    </>
   )
 }
 

@@ -39,7 +39,14 @@ module.exports = {
         icon: `src/images/icon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: "gatsby-plugin-transition-link",
+      options: {
+        layout: require.resolve(`./src/layout`),
+      },
+    },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
+    // `gatsby-plugin-transition-link`,
   ],
 }
