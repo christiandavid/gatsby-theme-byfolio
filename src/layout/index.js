@@ -1,55 +1,41 @@
 import React from "react"
-import { css } from "@emotion/core"
-import { useStaticQuery, graphql } from "gatsby"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
-
-import { rhythm } from "../utils/typography"
-import Menu from "../components/menu"
+import "./layout.css"
 
 export default ({ children }) => {
-  const data = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `
-  )
+  function svgIcos() {
+    return (
+      <svg className="hidden">
+        <defs>
+          <symbol id="icon-hand" viewBox="0 0 448 512">
+            <title>hand</title>
+            <path
+              fill="currentColor"
+              d="M408.781 128.007C386.356 127.578 368 146.36 368 168.79V256h-8V79.79c0-22.43-18.356-41.212-40.781-40.783C297.488 39.423 280 57.169 280 79v177h-8V40.79C272 18.36 253.644-.422 231.219.007 209.488.423 192 18.169 192 40v216h-8V80.79c0-22.43-18.356-41.212-40.781-40.783C121.488 40.423 104 58.169 104 80v235.992l-31.648-43.519c-12.993-17.866-38.009-21.817-55.877-8.823-17.865 12.994-21.815 38.01-8.822 55.877l125.601 172.705A48 48 0 0 0 172.073 512h197.59c22.274 0 41.622-15.324 46.724-37.006l26.508-112.66a192.011 192.011 0 0 0 5.104-43.975V168c.001-21.831-17.487-39.577-39.218-39.993z"
+            />
+          </symbol>
+        </defs>
+      </svg>
+    )
+  }
+
   return (
-    <div
-      css={css`
-        padding: ${rhythm(2)};
-        padding-top: ${rhythm(3.5)};
-      `}
-    >
-      <Menu
-        numPoints={18}
-        duration={600}
-        delayPointsMax={300}
-        delayPerPath={100}
-      />
-      <AniLink cover to="/" direction="right" bg="#000">
-        <h3
-          css={css`
-            margin-bottom: ${rhythm(2)};
-            display: inline-block;
-            font-style: normal;
-          `}
-        >
-          {data.site.siteMetadata.title}
-        </h3>
-      </AniLink>
-      <div
-        css={css`
-          position: relative;
-          z-index: 0;
-        `}
-      >
-        {children}
+    <>
+      {children}
+      {svgIcos()}
+      {/* This add a line in the bottom, but let Paint Drive Animation Work */}
+      <div className="copy">
+        <div>Developed with </div>
+        <div>
+          <svg className="icon hand">
+            <use xlinkHref="#icon-hand"></use>
+          </svg>
+          <svg className="icon hand">
+            <use xlinkHref="#icon-hand"></use>
+          </svg>
+        </div>
+        <div> by me</div>
       </div>
-    </div>
+      <span className="bgPageColor">.</span>
+    </>
   )
 }
