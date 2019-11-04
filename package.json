@@ -42,6 +42,7 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
+    "react-obfuscate": "^3.6.2",
     "react-typography": "^0.16.19",
     "typography": "^0.16.19",
     "typography-theme-kirkham": "^0.16.19"
