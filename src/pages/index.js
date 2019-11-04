@@ -24,7 +24,7 @@ export default ({ data }) => {
                   margin-bottom: ${rhythm(1 / 4)};
                 `}
               >
-                {node.frontmatter.title}{" "}
+                {node.frontmatter.company}{" "}
                 <span
                   css={css`
                     color: #bbb;
@@ -44,14 +44,23 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      filter: {
+        fields: {
+          slug: { regex: "/experience/", ne: "/experience/_additionalSkills/" }
+        }
+      }
+      sort: { fields: [frontmatter___dateFrom], order: DESC }
+    ) {
       totalCount
       edges {
         node {
           id
           frontmatter {
-            title
-            date(formatString: "DD MMMM, YYYY")
+            company
+            jobTitle
+            dateFrom(formatString: "YYYY")
+            dateTo(formatString: "YYYY")
           }
           fields {
             slug
