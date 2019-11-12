@@ -48,7 +48,6 @@
     "react-typography": "^0.16.19",
     "typewriter-effect": "^2.12.1",
     "typography": "^0.16.19",
-    "typography-theme-kirkham": "^0.16.19",
     "use-debounce": "^3.0.0"
   },
   "devDependencies": {
