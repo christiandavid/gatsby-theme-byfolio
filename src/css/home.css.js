@@ -22,6 +22,30 @@ const styles = {
       font-size: 1.5em;
     }
   `,
+  dataTopbar: css`
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 80px;
+    z-index: 1;
+    p {
+      float: left;
+      line-height: 0px;
+      font-size: 0.74rem;
+      font-family: sans-serif;
+      padding: 39.5px 0;
+      font-weight: 700;
+    }
+  `,
+  dot: css`
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background: #0e3e1e;
+    float: left;
+    margin: 35px 10px 0 0;
+  `,
 }
 
 export default styles

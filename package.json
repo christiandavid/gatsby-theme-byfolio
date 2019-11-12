@@ -36,6 +36,7 @@
     "gatsby-source-filesystem": "^2.1.33",
     "gatsby-transformer-remark": "^2.6.30",
     "gatsby-transformer-sharp": "^2.3.0",
+    "grapheme-splitter": "^1.0.4",
     "gsap": "^2.1.3",
     "imagesloaded": "^4.1.4",
     "masonry-layout": "^4.2.2",
@@ -45,6 +46,7 @@
     "react-helmet": "^5.2.1",
     "react-obfuscate": "^3.6.2",
     "react-typography": "^0.16.19",
+    "typewriter-effect": "^2.12.1",
     "typography": "^0.16.19",
     "typography-theme-kirkham": "^0.16.19",
     "use-debounce": "^3.0.0"
