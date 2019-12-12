@@ -22,10 +22,7 @@ const LayoutContactMe = ({ children, bgClassName }) => {
     return (
       <div css={styles.contactContactme}>
         <button
-          css={[
-            styles.btn,
-            styles.btnContactme,
-          ]}
+          css={[styles.btn, styles.btnContactme]}
           className="btn-contact-color"
           onClick={openContact}
           title="Contact me"

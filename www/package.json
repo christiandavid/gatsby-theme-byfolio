@@ -6,7 +6,9 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "lint": "eslint .",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\""
   },
   "dependencies": {
     "gatsby": "^2.18.10",
@@ -14,5 +16,11 @@
     "@christiandavid/gatsby-theme-byfolio": "*",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "prettier": "^1.19.1"
   }
 }

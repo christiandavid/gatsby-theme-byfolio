@@ -21,10 +21,7 @@ skills:
     { title: "Adobe Flash", image: ../images/skills/adobe-flash.png },
     { title: "ActionScript 3", image: ../images/skills/action-script.png },
     { title: "Google Maps", image: ../images/skills/google-maps.png },
-    {
-      title: "Google Analytics",
-      image: ../images/skills/google-analytics.png,
-    },
+    { title: "Google Analytics", image: ../images/skills/google-analytics.png },
     { title: "Adobe Fireworks", image: ../images/skills/adobe-firework.png },
     { title: "Git", image: ../images/skills/git.png },
   ]

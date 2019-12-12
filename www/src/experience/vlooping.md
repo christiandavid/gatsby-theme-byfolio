@@ -22,10 +22,7 @@ skills:
     { title: "JQuery", image: ../images/skills/jquery.png },
     { title: "Adobe Flash", image: ../images/skills/adobe-flash.png },
     { title: "ActionScript 3", image: ../images/skills/action-script.png },
-    {
-      title: "Google Analytics",
-      image: ../images/skills/google-analytics.png,
-    },
+    { title: "Google Analytics", image: ../images/skills/google-analytics.png },
     { title: "Adobe Fireworks", image: ../images/skills/adobe-firework.png },
     { title: "AWS EC2", image: ../images/skills/aws-ec2.png },
     { title: "AWS S3", image: ../images/skills/aws-s3.png },
