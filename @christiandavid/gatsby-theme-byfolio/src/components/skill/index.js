@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react"
 import PropTypes from "prop-types"
-import { jsx } from "@emotion/core"
 import { useScrollPosition } from "@n8tb1t/use-scroll-position"
 import AnimateItem from "./animate-item"
 import Delay from "../delay"
@@ -65,7 +64,7 @@ const Skill = ({
     type === "static"
       ? {
           section: styles.sectionStatic,
-          header: [styles.header, styles.noPointerEvents],
+          header: [styles.header, styles.headerStatic, styles.noPointerEvents],
           h2: [styles.textRight, styles.noPointerEvents],
           p: [styles.textRight, styles.elementRight, styles.noPointerEvents],
           div: [styles.gridLayer, styles.gridLayerRight],
@@ -93,7 +92,7 @@ const Skill = ({
         showLoadingAnimation={showLoadingAnimation}
       >
         <div css={cssStyles.div}>
-          <ul css={styles.grid} ref={gridRef}>
+          <ul css={styles.grid} data-test="skills" ref={gridRef}>
             {getSkills()}
           </ul>
         </div>
@@ -126,3 +125,5 @@ Skill.propTypes = {
 }
 
 export default Skill
+
+// Inspired by https://github.com/codrops/IsometricGrids

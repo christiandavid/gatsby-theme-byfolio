@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react"
 import PropTypes from "prop-types"
+import { graphql, useStaticQuery } from "gatsby"
 import Helmet from "react-helmet"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { jsx } from "@emotion/core"
 import { useWnResize } from "../hooks"
 import Slide from "./Slide"
 import styles from "./slideshow.css"
@@ -87,6 +87,21 @@ const Slideshow = ({ images, children }) => {
     )
   }
 
+  const siteQuery = graphql`
+    {
+      site {
+        siteMetadata {
+          basePath
+        }
+      }
+    }
+  `
+  const {
+    site: {
+      siteMetadata: { basePath },
+    },
+  } = useStaticQuery(siteQuery)
+
   return (
     <>
       <Helmet
@@ -103,9 +118,10 @@ const Slideshow = ({ images, children }) => {
           <header>
             <AniLink
               cover
-              to="/experience"
+              to={`${basePath}/experience`}
               css={styles.arrowBack}
               direction="right"
+              data-test="goback"
               bg="#3a3d98"
               style={{ opacity: 1 }}
             >
@@ -114,13 +130,14 @@ const Slideshow = ({ images, children }) => {
               </svg>
             </AniLink>
           </header>
-          <div css={styles.slideshow} tabIndex="0" ref={slideshow}>
+          <div css={styles.slideshow} data-test="slideshow" ref={slideshow}>
             {getSlides()}
             <nav css={styles.slideshowNav}>
               <button
                 onClick={prevSlide}
                 css={styles.btnjob}
                 aria-label="Previous slide"
+                data-test="previous"
               >
                 <svg className="icon">
                   <use xlinkHref="#icon-prev"></use>
@@ -130,6 +147,7 @@ const Slideshow = ({ images, children }) => {
                 onClick={nextSlide}
                 css={styles.btnjob}
                 aria-label="Next slide"
+                data-test="next"
               >
                 <svg className="icon">
                   <use xlinkHref="#icon-next"></use>
@@ -163,3 +181,5 @@ Slideshow.propTypes = {
 }
 
 export default Slideshow
+
+// Inspired by https://github.com/codrops/MultiLayoutSlideshow/

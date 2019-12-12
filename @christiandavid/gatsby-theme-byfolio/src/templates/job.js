@@ -1,7 +1,6 @@
 import React, { useLayoutEffect } from "react"
 import { graphql, navigate } from "gatsby"
 import { Helmet } from "react-helmet"
-import { jsx } from "@emotion/core"
 import styles from "./job.css"
 import Slideshow from "../components/Slideshow"
 import Skill from "../components/skill"
@@ -27,7 +26,7 @@ export default ({ data }) => {
       </Helmet>
       <Slideshow images={post.frontmatter.images}>
         <div css={styles.jobtitle}>
-          <div css={styles.jobtitleContent}>
+          <div css={styles.jobtitleContent} data-test="content">
             <h1>{post.frontmatter.company}</h1>
             <h3>
               {post.frontmatter.jobTitle}, {post.frontmatter.dateFrom}{" "}
@@ -58,7 +57,7 @@ export default ({ data }) => {
 export const query = graphql`
   query($slug: String!) {
     markdownRemark(
-      fields: { slug: { eq: $slug, ne: "/experience/_additionalSkills/" } }
+      fields: { slug: { eq: $slug }, hideOnExperience: { eq: false } }
     ) {
       html
       frontmatter {

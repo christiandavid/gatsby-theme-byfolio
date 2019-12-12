@@ -1,13 +1,23 @@
 import React, { useEffect, useRef } from "react"
+import PropTypes from "prop-types"
+import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import Typewriter from "typewriter-effect"
 import GraphemeSplitter from "grapheme-splitter"
-import { jsx } from "@emotion/core"
 import anime from "animejs"
 import LayoutContactMe from "../components/layout/layout-contact-me"
 import styles from "../css/home.css"
 
-export default () => {
+const Home = ({
+  data: {
+    site: {
+      siteMetadata: {
+        siteName,
+        homePage: { availableToHire, h1Text, h2Text, typewriter },
+      },
+    },
+  },
+}) => {
   const dotAnimation = useRef()
   function stringSplitter(string) {
     const splitter = new GraphemeSplitter()
@@ -16,48 +26,40 @@ export default () => {
 
   useEffect(() => {
     const dotEl = dotAnimation.current
-    anime({
-      targets: dotEl,
-      endDelay: 800,
-      easing: "easeInOutQuad",
-      direction: "alternate",
-      background: "#6CC551",
-      loop: true,
-    })
+    availableToHire &&
+      anime({
+        targets: dotEl,
+        endDelay: 800,
+        easing: "easeInOutQuad",
+        direction: "alternate",
+        background: "#6CC551",
+        loop: true,
+      })
 
-    return () => anime.remove(dotEl)
+    return () => availableToHire && anime.remove(dotEl)
   })
 
   return (
-    <LayoutContactMe bgClassName="black">
+    <LayoutContactMe bgClassName="home">
       <Helmet>
-        <title>Christian David Ibarguen</title>
+        <title>{siteName}</title>
         <meta charset="UTF-8" />
       </Helmet>
       <section css={styles.dataSection}>
         <div css={styles.dataContainer}>
           <div css={styles.dataContent}>
-            <div css={styles.dataTopbar}>
-              <div css={styles.dot} ref={dotAnimation}></div>
-              <p>Available to be hired</p>
-            </div>
-            <h1>Hi!, I'm Christian David Ibarguen</h1>
-            <h2>
-              I'm a Full Stack Developer who loves working in Backend, I have
-              worked as a software developer since 2006.
-            </h2>
+            {availableToHire && (
+              <div css={styles.dataTopbar}>
+                <div css={styles.dot} ref={dotAnimation}></div>
+                <p>Available to be hired</p>
+              </div>
+            )}
+            <h1>{h1Text}</h1>
+            <h2>{h2Text}</h2>
             <Typewriter
               css={styles.typewriter}
               options={{
-                strings: [
-                  "Coding is my passion 😎",
-                  "I'm a 🍕 lover",
-                  "I'm a pretty fast learner and always interested in learning new technologies 🤓",
-                  "I think one of my values is the <strong>ability to resolve problems<strong>",
-                  "I like to share what I know 👨‍🏫",
-                  "In my non-coding hours, I'm at the 🏋‍",
-                  "I also do design and UX work <span style='color: #27ae60;'>occasionally</span>",
-                ],
+                strings: typewriter,
                 autoStart: true,
                 loop: true,
                 delay: 55,
@@ -70,3 +72,37 @@ export default () => {
     </LayoutContactMe>
   )
 }
+
+Home.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        siteName: PropTypes.string.isRequired,
+        homePage: PropTypes.shape({
+          availableToHire: PropTypes.bool.isRequired,
+          h1Text: PropTypes.string.isRequired,
+          h2Text: PropTypes.string.isRequired,
+          typewriter: PropTypes.array.isRequired,
+        }).isRequired,
+      }).isRequired,
+    }).isRequired,
+  }),
+}
+
+export default Home
+
+export const query = graphql`
+  {
+    site {
+      siteMetadata {
+        siteName
+        homePage {
+          availableToHire
+          h1Text
+          h2Text
+          typewriter
+        }
+      }
+    }
+  }
+`

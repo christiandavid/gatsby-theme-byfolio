@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useRef, createRef } from "react"
 import PropTypes from "prop-types"
+import { useStaticQuery, graphql } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { jsx } from "@emotion/core"
+import { css } from "@emotion/core"
 import styles from "./menu.css"
 
 const Menu = ({
@@ -12,21 +13,28 @@ const Menu = ({
   fixedMenuPosition,
   bgClassName,
 }) => {
-  const data = [
-    { title: "Home", url: "/", color: "#000" },
-    { title: "Experience", url: "/experience", color: "#3a3d98" },
-    { title: "Skills", url: "/skills", color: "#d52d43" },
-    { title: "About Me", url: "/about-me", color: "#fff" },
-  ]
+  const defaultLinks = {
+    home: { title: "Home", color: "#000", url: "/" },
+    experience: {
+      title: "Experience",
+      color: "#3a3d98",
+      url: "/experience",
+    },
+    skills: { title: "Skills", color: "#d52d43", url: "/skills" },
+    aboutMe: {
+      title: "About Me",
+      color: "#fff",
+      url: "/about-me",
+    },
+  }
 
   const [isMenuOpen, setIsMenuOpen] = useState(null)
   const elmHamburger = useRef()
   const isAnimating = useRef(false)
-  const svgRef = useRef()
+  const arrPathRef = Array(3).fill("")
+  const pathRef = useRef(arrPathRef.map(createRef))
 
   useEffect(() => {
-    // TODO: Improve this
-    const path = svgRef.current.querySelectorAll("path")
     const delayPointsArray = []
     let timeStart = Date.now()
 
@@ -59,22 +67,16 @@ const Menu = ({
     }
 
     function render() {
-      if (isMenuOpen) {
-        for (let i = 0; i < path.length; i++) {
-          path[i].setAttribute(
-            "d",
-            updatePath(Date.now() - (timeStart + delayPerPath * i))
+      for (let i = 0; i < pathRef.current.length; i++) {
+        pathRef.current[i].current.setAttribute(
+          "d",
+          updatePath(
+            Date.now() -
+              (timeStart +
+                delayPerPath *
+                  (isMenuOpen ? i : pathRef.current.length - i - 1))
           )
-        }
-      } else {
-        for (let i = 0; i < path.length; i++) {
-          path[i].setAttribute(
-            "d",
-            updatePath(
-              Date.now() - (timeStart + delayPerPath * (path.length - i - 1))
-            )
-          )
-        }
+        )
       }
     }
 
@@ -82,7 +84,7 @@ const Menu = ({
       render()
       if (
         Date.now() - timeStart <
-        duration + delayPerPath * (path.length - 1) + delayPointsMax
+        duration + delayPerPath * (pathRef.current.length - 1) + delayPointsMax
       ) {
         requestAnimationFrame(() => {
           renderLoop()
@@ -119,85 +121,153 @@ const Menu = ({
     setIsMenuOpen(!isMenuOpen)
   }
 
-  function svgIcos() {
+  function svgIcos(shapeColor) {
+    const shapePath = css`
+      &:nth-of-type(1) {
+        fill: ${shapeColor.shape1.color};
+        opacity: ${shapeColor.shape1.opacity};
+      }
+      &:nth-of-type(2) {
+        fill: ${shapeColor.shape2.color};
+        opacity: ${shapeColor.shape2.opacity};
+      }
+      &:nth-of-type(3) {
+        fill: ${shapeColor.shape3.color};
+        opacity: ${shapeColor.shape3.opacity};
+      }
+    `
+
     return (
       <svg
         css={styles.shape}
         {...(isMenuOpen && { className: "is-opened" })}
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
-        ref={svgRef}
       >
-        {Array(3)
-          .fill("")
-          .map((_item, index) => (
-            <path key={`path${index}`} css={styles.shapePath}></path>
-          ))}
+        {arrPathRef.map((_item, index) => (
+          <path
+            key={`path${index}`}
+            ref={pathRef.current[index]}
+            css={shapePath}
+          ></path>
+        ))}
       </svg>
     )
   }
 
+  function menuGenerator({ title, color, url }) {
+    return (
+      <AniLink
+        paintDrip
+        key={url}
+        to={url}
+        hex={color}
+        className={`global-menu-item${isMenuOpen ? " is-opened" : ""}`}
+      >
+        {title}
+      </AniLink>
+    )
+  }
+
+  // Get menu links and shape color
+  const siteQuery = graphql`
+    {
+      site {
+        siteMetadata {
+          basePath
+          menuLinks {
+            color
+            title
+            link
+            name
+          }
+          shapeColor {
+            shape1 {
+              opacity
+              color
+            }
+            shape2 {
+              opacity
+              color
+            }
+            shape3 {
+              opacity
+              color
+            }
+          }
+        }
+      }
+    }
+  `
+  const {
+    site: {
+      siteMetadata: { basePath, menuLinks, shapeColor },
+    },
+  } = useStaticQuery(siteQuery)
+
   const mainClass = fixedMenuPosition
     ? [styles.portfolio, styles.fixedPosition]
     : styles.portfolio
-  const bgLinkColor =
-    styles[bgClassName ? `${bgClassName}HamburgerLineIn` : `hamburgerLineIn`]
+
+  // Modify default links data and add new menu items
+  menuLinks.forEach(({ name, title, color, link }) => {
+    const menuOption = defaultLinks[name]
+    if (menuOption) {
+      menuOption.title = title || menuOption.title
+      menuOption.color = color || menuOption.color
+      menuOption.url = basePath
+        ? `${basePath}${menuOption.url}`
+        : menuOption.url
+    } else if (link && title) {
+      defaultLinks["newItems"] = defaultLinks["newItems"] || []
+      defaultLinks["newItems"].push({
+        title,
+        link,
+        color: color || "#000",
+      })
+    }
+  })
 
   return (
     <main css={mainClass}>
       <div>
-        <div
+        <button
           className={`hamburger${isMenuOpen ? " is-opened-navi" : ""}`}
           ref={elmHamburger}
+          data-test="menu"
           onClick={elmHamburgerClick}
         >
           <div className="hamburger-line hamburger-line-1">
-            <div
-              css={bgLinkColor}
-              className="hamburger-line-in hamburger-line-in-1"
-            ></div>
+            <div className="hamburgercolr hamburger-line-in hamburger-line-in-1"></div>
           </div>
           <div className="hamburger-line hamburger-line-2">
-            <div
-              css={bgLinkColor}
-              className="hamburger-line-in hamburger-line-in-2"
-            ></div>
+            <div className="hamburgercolr hamburger-line-in hamburger-line-in-2"></div>
           </div>
           <div className="hamburger-line hamburger-line-3">
-            <div
-              css={bgLinkColor}
-              className="hamburger-line-in hamburger-line-in-3"
-            ></div>
+            <div className="hamburgercolr hamburger-line-in hamburger-line-in-3"></div>
           </div>
           <div className="hamburger-line hamburger-line-cross-1">
-            <div
-              css={bgLinkColor}
-              className="hamburger-line-in hamburger-line-in-cross-1"
-            ></div>
+            <div className="hamburgercolr hamburger-line-in hamburger-line-in-cross-1"></div>
           </div>
           <div className="hamburger-line hamburger-line-cross-2">
-            <div
-              css={bgLinkColor}
-              className="hamburger-line-in hamburger-line-in-cross-2"
-            ></div>
+            <div className="hamburgercolr hamburger-line-in hamburger-line-in-cross-2"></div>
           </div>
-        </div>
-        <div css={styles.globalMenu}>
+        </button>
+        <div css={styles.globalMenu} data-test="menulinks">
           <div>
-            {data.map(({ title, url, color }) => (
-              <AniLink
-                paintDrip
-                key={url}
-                to={url}
-                hex={color}
-                className={`global-menu-item${isMenuOpen ? " is-opened" : ""}`}
-              >
-                {title}
-              </AniLink>
-            ))}
+            {// Generates the menu
+            Object.entries(defaultLinks)
+              .map(([_key, value]) => {
+                return !Array.isArray(value)
+                  ? menuGenerator(value)
+                  : value.map(({ title, color, link: url }) =>
+                      menuGenerator({ title, color, url })
+                    )
+              })
+              .flat()}
           </div>
         </div>
-        {svgIcos()}
+        {svgIcos(shapeColor)}
       </div>
     </main>
   )
@@ -213,3 +283,5 @@ Menu.propTypes = {
 }
 
 export default Menu
+
+// Inspired by https://github.com/ykob/shape-overlays

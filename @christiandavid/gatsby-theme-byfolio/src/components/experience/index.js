@@ -1,9 +1,8 @@
-import React, { useState, useRef, createRef, useEffect } from "react"
+import React, { useState, useRef, createRef } from "react"
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import Img from "gatsby-image"
-import { jsx } from "@emotion/core"
-import useMQResize from "../hooks/useMQResize"
+import { useMQResize } from "../hooks"
 import Delay from "../delay"
 import isSSR from "../../utils/isSSR"
 import styles from "./experience.css"
@@ -47,8 +46,9 @@ const Experience = ({
         }
       }
 
-      itemsHeight +=
-        item.current.offsetHeight + parseFloat(styles["marginBottom"], 10)
+      itemsHeight += item.current
+        ? item.current.offsetHeight + parseFloat(styles["marginBottom"], 10)
+        : parseFloat(styles["marginBottom"], 10)
     }
     minMarginTop = minMarginTop === defaultMinMargin ? 1 : minMarginTop
     if (itemsHeight) {
@@ -89,7 +89,7 @@ const Experience = ({
         const years = dateFrom === dateTo ? dateFrom : `${dateFrom} - ${dateTo}`
         let addYear = false
         if (dateTo.slice(-1) % 3 === 0) {
-          if (currentYear != dateTo) {
+          if (currentYear !== dateTo) {
             addYear = true
           }
           currentYear = dateTo
@@ -142,7 +142,7 @@ const Experience = ({
         cb={handleLoad}
         showLoadingAnimation={showLoadingAnimation}
       >
-        <div css={styles.grid} ref={gridRef}>
+        <div css={styles.grid} data-test="jobs" ref={gridRef}>
           {getJobs()}
         </div>
       </Delay>

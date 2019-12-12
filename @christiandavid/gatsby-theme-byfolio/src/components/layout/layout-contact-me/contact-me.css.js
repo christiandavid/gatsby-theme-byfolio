@@ -3,8 +3,6 @@ import mediaQueryGenerator from "../../../utils/mediaQGen"
 
 const [media40em] = mediaQueryGenerator([{ type: "max", size: "40" }])
 
-const whiteColor = `color: #fff;`
-
 const styles = {
   wrapper: css`
     .contact {
@@ -171,12 +169,6 @@ const styles = {
   `,
   btnContactme: css`
     font-size: 1.5em;
-  `,
-  blackPgColor: css`
-    ${whiteColor}
-  `,
-  experiencePgColor: css`
-    ${whiteColor}
   `,
   contactMe: css`
     font-size: 1.8rem;

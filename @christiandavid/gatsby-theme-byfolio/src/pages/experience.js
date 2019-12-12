@@ -26,7 +26,8 @@ export const query = graphql`
     allMarkdownRemark(
       filter: {
         fields: {
-          slug: { regex: "/experience/", ne: "/experience/_additionalSkills/" }
+          slug: { regex: "/experience/" }
+          hideOnExperience: { eq: false }
         }
       }
       sort: { fields: [frontmatter___dateFrom], order: DESC }

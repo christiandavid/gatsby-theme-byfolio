@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react"
+import { useEffect, useState, useCallback } from "react"
 import { useDebouncedCallback } from "use-debounce"
 import isSSR from "../../utils/isSSR"
 
@@ -6,7 +6,7 @@ import isSSR from "../../utils/isSSR"
  * Window Resize Hook
  * This function detects and returns the new window or element width and height
  *
- * @param {boolean} [ref=false]
+ * @param {boolean||ref} [ref=false]
  * @param {number} [delay=500]
  * @returns {object} [{width, height}]
  */

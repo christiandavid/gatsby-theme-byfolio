@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, createRef } from "react"
 import PropTypes from "prop-types"
 import Img from "gatsby-image"
-import { jsx } from "@emotion/core"
 import anime from "animejs"
 import styles from "./skills.css"
 

@@ -53,7 +53,7 @@ module.exports = {
         // Color for menu background
         shapeColor: {
           shape1: {
-            color: `red`,
+            color: `#413f46`,
             opacity: `0.7`
           },
           shape2: {

@@ -2,7 +2,6 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { StaticQuery, graphql } from "gatsby"
-import { jsx } from "@emotion/core"
 import styles from "./layout.css"
 import Menu from "../menu"
 
@@ -16,27 +15,33 @@ const Layout = ({
     <div className={`layout-wrapper ${bgClassName || "white"}`}>
       <StaticQuery
         query={graphql`
-          query SiteTitleQuery {
+          {
             site {
               siteMetadata {
                 title
+                email
+                siteKeywords
+                siteDescription
               }
             }
           }
         `}
-        render={data => (
+        render={({
+          site: {
+            siteMetadata: { title: siteTitle, siteKeywords, siteDescription },
+          },
+        }) => (
           <>
             <Helmet
-              title={title || data.site.siteMetadata.title}
+              title={title || siteTitle}
               meta={[
                 {
                   name: "description",
-                  content:
-                    "This cool page contains information about my work experience as a software developer",
+                  content: siteDescription,
                 },
                 {
                   name: "keywords",
-                  content: "Software developer, Full Stack Developer",
+                  content: siteKeywords,
                 },
                 { charSet: "utf-8" },
               ]}

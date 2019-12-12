@@ -78,6 +78,10 @@ const styles = {
   header: css`
     padding: 0 3vmax;
   `,
+  headerStatic: css`
+    position: relative;
+    z-index: 1;
+  `,
   fixed: css`
     position: fixed;
   `,

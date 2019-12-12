@@ -3,13 +3,6 @@ import mediaQueryGenerator from "../../utils/mediaQGen"
 
 const [media55em] = mediaQueryGenerator([{ type: "max", size: "55" }])
 
-const whiteBg = `
-  &::before,
-  &::after {
-    background-color: #fff;
-  }
-`
-
 const styles = {
   portfolio: css`
     &::after {
@@ -33,6 +26,9 @@ const styles = {
       left: 1.25em;
       z-index: 110;
       pointer-events: auto;
+      background: none;
+      border: none;
+      outline: none;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       &::after {
         width: 64px;
@@ -74,6 +70,24 @@ const styles = {
       &:nth-of-type(4) {
         transition-delay: 0.15s;
       }
+      &:nth-of-type(5) {
+        transition-delay: 0.2s;
+      }
+      &:nth-of-type(6) {
+        transition-delay: 0.25s;
+      }
+      &:nth-of-type(7) {
+        transition-delay: 0.3s;
+      }
+      &:nth-of-type(8) {
+        transition-delay: 0.35s;
+      }
+      &:nth-of-type(9) {
+        transition-delay: 0.4s;
+      }
+      &:nth-of-type(10) {
+        transition-delay: 0.45s;
+      }
       &.is-opened {
         opacity: 1;
         transform: translateY(0) rotate(0);
@@ -90,7 +104,25 @@ const styles = {
         transition-delay: 0.75s;
       }
       &.is-opened:nth-of-type(4) {
-        transition-delay: 0.7s;
+        transition-delay: 0.6s;
+      }
+      &.is-opened:nth-of-type(5) {
+        transition-delay: 0.9s;
+      }
+      &.is-opened:nth-of-type(6) {
+        transition-delay: 0.95s;
+      }
+      &.is-opened:nth-of-type(7) {
+        transition-delay: 1s;
+      }
+      &.is-opened:nth-of-type(8) {
+        transition-delay: 1.05s;
+      }
+      &.is-opened:nth-of-type(9) {
+        transition-delay: 1.1s;
+      }
+      &.is-opened:nth-of-type(10) {
+        transition-delay: 1.15s;
       }
     }
     .hamburger-line {
@@ -251,24 +283,6 @@ const styles = {
     top: 0;
     left: 0;
   `,
-  blackHamburgerLineIn: css`
-    ${whiteBg}
-  `,
-  experienceHamburgerLineIn: css`
-    ${whiteBg}
-  `,
-  skillHamburgerLineIn: css`
-    ${whiteBg}
-  `,
-  skillHamburgerLineIn: css`
-    ${whiteBg}
-  `,
-  hamburgerLineIn: css`
-    &::before,
-    &::after {
-      background-color: #000;
-    }
-  `,
   globalMenu: css`
     width: 100vw;
     height: 100vh;
@@ -292,20 +306,6 @@ const styles = {
     left: 0;
     &.is-opened {
       pointer-events: auto;
-    }
-  `,
-  shapePath: css`
-    &:nth-of-type(1) {
-      fill: #413f46;
-      opacity: 0.7;
-    }
-    &:nth-of-type(2) {
-      fill: #e6e5ea;
-      opacity: 0.7;
-    }
-    &:nth-of-type(3) {
-      fill: #fff;
-      opacity: 0.7;
     }
   `,
 }
