@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Delay component renders correctly 1`] = `
+<div
+  css="delayLoading"
+/>
+`;
