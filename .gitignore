@@ -68,3 +68,7 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 .vscode
+
+# Cypress
+www/cypress/screenshots/
+www/cypress/videos/
