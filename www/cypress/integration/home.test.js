@@ -23,7 +23,7 @@ describe("Home page", () => {
     cy.get(".hamburger")
       .click()
       .should("have.class", "is-opened-navi")
-    cy.wait(1000)
+    cy.wait(1500)
     // Close menu
     cy.get(".hamburger")
       .click()

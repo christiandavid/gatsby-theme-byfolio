@@ -36,7 +36,7 @@ describe("Vlooping experience page", () => {
         .contains(title)
       cy.get("[data-test=next]").click()
       cy.scrollTo(0, 0)
-      cy.wait(1000)
+      cy.wait(1500)
     })
   })
 
@@ -52,7 +52,7 @@ describe("Vlooping experience page", () => {
         .contains(title)
       cy.get("[data-test=previous]").click()
       cy.scrollTo(0, 0)
-      cy.wait(1000)
+      cy.wait(1500)
     })
   })
 

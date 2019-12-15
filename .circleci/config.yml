@@ -1,0 +1,40 @@
+version: 2
+jobs:
+  test:
+    working_directory: ~/gatsby-theme-byfolio
+    docker:
+      - image: circleci/node:13.3.0
+    steps:
+      - checkout
+      - run:
+          name: update-yarn
+          command: "sudo curl --compressed -o- -L https://yarnpkg.com/install.sh | bash"
+      - run:
+          name: install-cypress-dependencies
+          command: "sudo apt-get install xvfb libgtk-3-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2"
+      - restore_cache:
+          name: Restore-yarn-package-cache
+          key: yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run:
+          name: install-dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: save-yarn-package-cache
+          key: yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+            - ~/.cache/Cypress
+            - ./node_modules
+      - run:
+          name: test
+          command: yarn workspaces run test
+      - store_artifacts:
+          path: test-results.xml
+          prefix: tests
+      - store_test_results:
+          path: test-results.xml
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
