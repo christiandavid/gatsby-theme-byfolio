@@ -3,5 +3,13 @@
   "workspaces": [
     "@christiandavid/gatsby-theme-byfolio",
     "www"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn workspaces run lint && yarn workspaces run format"
+    }
+  },
+  "devDependencies": {
+    "husky": "^3.1.0"
+  }
 }
