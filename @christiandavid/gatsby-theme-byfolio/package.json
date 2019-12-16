@@ -1,7 +1,7 @@
 {
   "name": "@christiandavid/gatsby-theme-byfolio",
   "description": "A simplified way to create a portfolio using GatsbyJS",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "license": "MIT",
   "keywords": [
     "gatsby",
