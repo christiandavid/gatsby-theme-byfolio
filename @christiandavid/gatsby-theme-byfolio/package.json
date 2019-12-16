@@ -1,9 +1,14 @@
 {
   "name": "@christiandavid/gatsby-theme-byfolio",
-  "private": true,
   "description": "A simplified way to create a portfolio using GatsbyJS",
   "version": "1.0.0",
   "license": "MIT",
+  "keywords": [
+    "gatsby",
+    "gatsby-theme",
+    "gatsby-plugin",
+    "byfolio"
+  ],
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",

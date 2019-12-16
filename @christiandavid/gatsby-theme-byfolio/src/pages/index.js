@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet"
 import Typewriter from "typewriter-effect"
 import GraphemeSplitter from "grapheme-splitter"
 import anime from "animejs"
+import { css } from "@emotion/core"
 import LayoutContactMe from "../components/layout/layout-contact-me"
 import styles from "../css/home.css"
 
@@ -13,7 +14,7 @@ const Home = ({
     site: {
       siteMetadata: {
         siteName,
-        homePage: { availableToHire, h1Text, h2Text, typewriter },
+        homePage: { availableToHire, dotColors, h1Text, h2Text, typewriter },
       },
     },
   },
@@ -24,6 +25,15 @@ const Home = ({
     return splitter.splitGraphemes(string)
   }
 
+  const dotCss = css`
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background: ${dotColors[0]};
+    float: left;
+    margin: 35px 10px 0 0;
+  `
+
   useEffect(() => {
     const dotEl = dotAnimation.current
     availableToHire &&
@@ -32,7 +42,7 @@ const Home = ({
         endDelay: 800,
         easing: "easeInOutQuad",
         direction: "alternate",
-        background: "#6CC551",
+        background: dotColors[1],
         loop: true,
       })
 
@@ -50,7 +60,7 @@ const Home = ({
           <div css={styles.dataContent}>
             {availableToHire && (
               <div css={styles.dataTopbar}>
-                <div css={styles.dot} ref={dotAnimation}></div>
+                <div css={dotCss} ref={dotAnimation}></div>
                 <p>Available to be hired</p>
               </div>
             )}
@@ -98,6 +108,7 @@ export const query = graphql`
         siteName
         homePage {
           availableToHire
+          dotColors
           h1Text
           h2Text
           typewriter

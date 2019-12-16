@@ -38,14 +38,6 @@ const styles = {
       font-weight: 700;
     }
   `,
-  dot: css`
-    width: 8px;
-    height: 8px;
-    border-radius: 4px;
-    background: #0e3e1e;
-    float: left;
-    margin: 35px 10px 0 0;
-  `,
 }
 
 export default styles

@@ -6,7 +6,7 @@
 
 Initially this was a personal portfolio made in GatsbyJs, now it's a Gatsby theme available to anyone who wants to tell their work history focusing only on the content.
 
-![Gatsby Portfolio](readme-files/Byfolio.jpg)
+![Gatsby Portfolio](https://raw.githubusercontent.com/christiandavid/gatsby-theme-byfolio/dev/%40christiandavid/gatsby-theme-byfolio/readme-files/Byfolio.jpg)
 
 - [Installation](#installation)
 - [Configuration](#configuration)
@@ -26,10 +26,10 @@ npm install --save @christiandavid/gatsby-theme-byfolio
 
 ### With `git clone`
 
-You can also clone this repository which contains the information in my portfolio
+You can also clone this repository which contains the information of my portfolio
 
 ```sh
-git@github.com:christiandavid/gatsby-theme-byfolio.git my-best-portfolio
+git clone git@github.com:christiandavid/gatsby-theme-byfolio.git my-best-portfolio
 
 cd my-best-portfolio
 
@@ -43,6 +43,8 @@ yarn workspace www build
 ```
 
 ## Configuration
+
+After each modification in gatsby-config.js it is necessary to restart the site from the terminal.
 
 ```js
 // gatsby-config.js
@@ -62,6 +64,8 @@ module.exports = {
         siteKeywords: `Software developer, Full Stack Developer`,
         useMozJpeg: true,
         menuLinks: [
+          // title = Link text
+          // color = Animation background color on click
           { name: `home`, title: `Home`, color: `#000`, link: `` },
           {
             name: `experience`,
@@ -70,33 +74,20 @@ module.exports = {
             link: ``,
           },
           { name: `skills`, title: `Skills`, color: `#d52d43`, link: `` },
-          { name: `aboutMe`, title: `About Me`, color: `#fff`, link: `` }, // Name is used to replace the title and the color of a default item
-          // { name: ``, title: `Batman`, link: `/imBatman`, color: `yellow` }, // Additional link
+          { name: `aboutMe`, title: `About Me`, color: `#fff`, link: `` },
         ],
-        shapeColor: {
-          shape1: {
-            color: `#413f46`,
-            opacity: `0.7`,
-          },
-          shape2: {
-            color: `#e6e5ea`,
-            opacity: `0.7`,
-          },
-          shape3: {
-            color: `#fff`,
-            opacity: `0.7`,
-          },
-        },
         email: `christian@davidibarguen.com`,
         social: {
+          // Usernames
           twitter: `ichristiandavid`,
           gitHub: `christiandavid`,
           stackOverflow: `967956/christian-david`,
           linkedIn: `in/christianibarguen/`,
-          resumeInPdf: `/CV-19.pdf`,
+          resumeInPdf: `/CV-19.pdf`, // url or local link
         },
         homePage: {
           availableToHire: true,
+          dotColors: ["#0e3e1e", "#6CC551"],
           h1Text: `Hi!, I'm Christian David Ibarguen`,
           h2Text: `I'm a Full Stack Developer who loves working in Backend, I have
               worked as a software developer since 2006.`,
@@ -110,36 +101,71 @@ module.exports = {
             `I also do design and UX work <span style='color: #27ae60;'>occasionally</span>`,
           ],
         },
+        // Color for menu background
+        shapeColor: {
+          link: { color: "#171616", hover: "#fff" },
+          shape1: {
+            color: `#413f46`,
+            opacity: `0.7`,
+          },
+          shape2: {
+            color: `#e6e5ea`,
+            opacity: `0.7`,
+          },
+          shape3: {
+            color: `#fff`,
+            opacity: `0.7`,
+          },
+        },
         footer: `heart`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          `UA-151335375-1`, // Google Analytics / GA
+        ],
+        // This object gets passed directly to the gtag config command
+        // This config will be shared across all trackingIds
+        gtagConfig: {
+          anonymize_ip: true,
+          cookie_expires: 0,
+          send_page_view: true,
+          cookie_name: `christianibarguen.com`,
+        },
+        // This object is used for configuration specific to this plugin
+        pluginConfig: {
+          // Puts tracking script in the head instead of the body
+          head: false,
+          // Setting this parameter is also optional
+          respectDNT: false,
+        },
       },
     },
   ],
 }
 ```
 
-| Option name     | Type    | Description                                                                                      |
-| --------------- | ------- | ------------------------------------------------------------------------------------------------ |
-| basePath        | string  | Where should the site be served from? /porfolio will change all paths to start with /porfolio    |
-| path            | string  | Place where the files are stored, for example: `src/`                                            |
-| imagesPath      | string  | Place where the images files are stored, for example: `src/images/`                              |
-| typographyPath  | string  | Place where the file that defines your website’s typography configuration is located             |
-| siteTitle       | string  | The main title for the website, used in the `<title>` element                                    |
-| siteUrl         | string  | The portfolio url, example: `https://christianibarguen.com`                                      |
-| siteName        | string  | Represents the name of the web application as it is usually displayed to the user                |
-| siteShortName   | string  | Represents a short version of the name of the web application                                    |
-| siteDescription | string  | Allows you to describe the purpose of the web application                                        |
-| siteKeywords    | string  | Keywords for the page                                                                            |
-| useMozJpeg      | boolean | MozJPEG provides better image compression than the default encoder used in gatsby-plugin-sharp.  |
-| menuLinks       | array   | An array of objects for the menu, each item represents a link with their respective information, |
-|                 |         | color represents the color that the animation shows when it is pressed                           |
-| email           | string  | Email for contact, this is displayed when the Contact Me button is pressed                       |
-| social          | object  | An Object with the user accounts of: twitter, gitHub, stackOverflow,                             |
-|                 |         | linkedIn and `resumeInPdf` resume link                                                           |
-| homePage        | object  | An object with information of titles, texts with animated description, and animation             |
-|                 |         | to show if you are available to be hired                                                         |
-| shapeColor      | object  | Represents the colors used in the menu animation, in total there are 3 in which you can specify  |
-|                 |         | the color and the opacity                                                                        |
-| footer          | string  | Text to show in the footer only has 2 options: `heart`or `hand`                                  |
+| Option name     | Type    | Description                                                                                                                           |
+| --------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| basePath        | string  | Where should the site be served from? /porfolio will change all paths to start with /porfolio                                         |
+| path            | string  | Place where the files are stored, for example: `src/`                                                                                 |
+| imagesPath      | string  | Place where the images files are stored, for example: `src/images/`                                                                   |
+| typographyPath  | string  | Place where the file that defines your website’s typography configuration is located                                                  |
+| siteTitle       | string  | The main title for the website, used in the `<title>` element                                                                         |
+| siteUrl         | string  | The portfolio url, example: `https://christianibarguen.com`                                                                           |
+| siteName        | string  | Represents the name of the web application as it is usually displayed to the user                                                     |
+| siteShortName   | string  | Represents a short version of the name of the web application                                                                         |
+| siteDescription | string  | Allows you to describe the purpose of the web application                                                                             |
+| siteKeywords    | string  | Keywords for the page                                                                                                                 |
+| useMozJpeg      | boolean | MozJPEG provides better image compression than the default encoder used in gatsby-plugin-sharp.                                       |
+| menuLinks       | array   | An array of objects for the menu, each item represents a link, color represents the color that the animation shows when it is pressed |
+| email           | string  | Email for contact, this is displayed when the Contact Me button is pressed                                                            |
+| social          | object  | An Object with the user accounts of: twitter, gitHub, stackOverflow, linkedIn and `resumeInPdf` resume link                           |
+| homePage        | object  | An object with information of titles, texts with animated description, and animation to show if you are available to be hired         |
+| shapeColor      | object  | Represents the colors used in the menu animation, in total there are 3 in which you can specify the color and the opacity             |
+| footer          | string  | Text to show in the footer only has 2 options: `heart`or `hand`                                                                       |
 
 ## Adding experience and skills
 
@@ -147,6 +173,10 @@ This theme generates pages based on Markdown files in the `path`/experience dire
 All company logos must be relative to `imagesPath`/companies directory.
 All Skills logos must be relative to `imagesPath`/skills directory.
 All layout images must be relative to company directory, for example: `imagesPath`/companies/acef
+
+### Important
+
+For each Skill you must add the logo of the Framework, library or program, with a resolution of **width: 500px, height: 500px**, in the src/images/skills/ directory I leave several logos, **only Skills logos that I own are present, if the logo you need does not appear you must create it**.
 
 Layout number is for image animation you can select from 1 to 5
 
@@ -227,6 +257,8 @@ dateTo: "2019-09-01"
 ## Component shadowing
 
 You can customize elements like the css style or about-me content by taking advantage of [component shadowing](https://www.gatsbyjs.org/blog/2019-04-29-component-shadowing/).
+
+I recommend using [Coolors.co](https://coolors.co/) to select a color palette and adapt it to your new portfolio.
 
 You can change the color of the text and the background of each page, for example:
 
@@ -324,7 +356,7 @@ You can change the about-me text in the "src/gatsby-theme-byfolio/contentJSON/ab
 
 Are you using this theme in your own project? Submit a PR with your website added to this list!
 
-## 💫 Deploy
+## Deploy
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/christiandavid/gatsby-theme-byfolio)
 
@@ -335,6 +367,9 @@ Are you using this theme in your own project? Submit a PR with your website adde
 ## Credits
 
 Special thanks to:
+
 [GatsbyJs](https://www.gatsbyjs.org/)
+
 [Codrops](https://tympanus.net/codrops/)
+
 [Fontawesome](https://fontawesome.com/license)

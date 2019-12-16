@@ -182,6 +182,10 @@ const Menu = ({
             name
           }
           shapeColor {
+            link {
+              color
+              hover
+            }
             shape1 {
               opacity
               color
@@ -204,6 +208,15 @@ const Menu = ({
       siteMetadata: { basePath, menuLinks, shapeColor },
     },
   } = useStaticQuery(siteQuery)
+
+  const linkColor = css`
+    & a {
+      color: ${shapeColor.link.color};
+    }
+    & a:hover {
+      color: ${shapeColor.link.hover};
+    }
+  `
 
   const mainClass = fixedMenuPosition
     ? [styles.portfolio, styles.fixedPosition]
@@ -253,7 +266,7 @@ const Menu = ({
             <div className="hamburgercolr hamburger-line-in hamburger-line-in-cross-2"></div>
           </div>
         </button>
-        <div css={styles.globalMenu} data-test="menulinks">
+        <div css={[styles.globalMenu, linkColor]} data-test="menulinks">
           <div>
             {// Generates the menu
             Object.entries(defaultLinks)

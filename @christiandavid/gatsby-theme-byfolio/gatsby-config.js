@@ -36,6 +36,7 @@ module.exports = ({
   },
   homePage = {
     availableToHire: true,
+    dotColors: ["#0e3e1e", "#6CC551"],
     h1Text: `Hi!, I'm Christian David Ibarguen`,
     h2Text: `I'm a Full Stack Developer who loves working in Backend, I have
         worked as a software developer since 2006.`,
@@ -51,6 +52,7 @@ module.exports = ({
   },
   // Color for menu background
   shapeColor = {
+    link: { color: "#171616", hover: "#fff" },
     shape1: {
       color: `#413f46`,
       opacity: `0.7`,

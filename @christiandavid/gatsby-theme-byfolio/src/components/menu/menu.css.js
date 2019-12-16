@@ -45,7 +45,6 @@ const styles = {
       }
     }
     .global-menu-item {
-      color: #171616;
       font-size: 4vmax;
       opacity: 0;
       transform: translateY(-100%);
@@ -55,9 +54,6 @@ const styles = {
       transition: transform 0.3s, opacity 0.3s;
       transition-timing-function: ease-in;
       outline: none;
-      &:hover {
-        color: #fff;
-      }
       &:nth-of-type(1) {
         transition-delay: 0s;
       }
