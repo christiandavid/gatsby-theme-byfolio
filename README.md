@@ -6,7 +6,7 @@
 
 Initially this was a personal portfolio made in GatsbyJs, now it's a Gatsby theme available to anyone who wants to tell their work history focusing only on the content.
 
-![Gatsby Portfolio](readme-files/Byfolio.jpg)
+![Gatsby Portfolio](@christiandavid/gatsby-theme-byfolio/readme-files/Byfolio.jpg)
 
 - [Installation](#installation)
 - [Configuration](#configuration)
@@ -67,25 +67,25 @@ module.exports = {
             name: `experience`,
             title: `Experience`,
             color: `#3a3d98`,
-            link: ``,
+            link: ``
           },
           { name: `skills`, title: `Skills`, color: `#d52d43`, link: `` },
-          { name: `aboutMe`, title: `About Me`, color: `#fff`, link: `` }, // Name is used to replace the title and the color of a default item
+          { name: `aboutMe`, title: `About Me`, color: `#fff`, link: `` } // Name is used to replace the title and the color of a default item
           // { name: ``, title: `Batman`, link: `/imBatman`, color: `yellow` }, // Additional link
         ],
         shapeColor: {
           shape1: {
             color: `#413f46`,
-            opacity: `0.7`,
+            opacity: `0.7`
           },
           shape2: {
             color: `#e6e5ea`,
-            opacity: `0.7`,
+            opacity: `0.7`
           },
           shape3: {
             color: `#fff`,
-            opacity: `0.7`,
-          },
+            opacity: `0.7`
+          }
         },
         email: `christian@davidibarguen.com`,
         social: {
@@ -93,7 +93,7 @@ module.exports = {
           gitHub: `christiandavid`,
           stackOverflow: `967956/christian-david`,
           linkedIn: `in/christianibarguen/`,
-          resumeInPdf: `/CV-19.pdf`,
+          resumeInPdf: `/CV-19.pdf`
         },
         homePage: {
           availableToHire: true,
@@ -107,14 +107,14 @@ module.exports = {
             `I think one of my values is the <strong>ability to resolve problems<strong>`,
             `I like to share what I know 👨‍🏫`,
             `In my non-coding hours, I'm at the 🏋‍`,
-            `I also do design and UX work <span style='color: #27ae60;'>occasionally</span>`,
-          ],
+            `I also do design and UX work <span style='color: #27ae60;'>occasionally</span>`
+          ]
         },
-        footer: `heart`,
-      },
-    },
-  ],
-}
+        footer: `heart`
+      }
+    }
+  ]
+};
 ```
 
 | Option name     | Type    | Description                                                                                      |
@@ -232,8 +232,8 @@ You can change the color of the text and the background of each page, for exampl
 
 ```js
 // src/gatsby-theme-byfolio/layout/layoutColors.css.js
-import { css } from "@emotion/core"
-import lineSvg from "../../../static/assets/line.svg"
+import { css } from "@emotion/core";
+import lineSvg from "../../../static/assets/line.svg";
 
 const styles = css`
   .e404.layout-wrapper .layout-inner {
@@ -298,9 +298,9 @@ const styles = css`
   .e404 .btn-contact-color {
     color: #000;
   }
-`
+`;
 
-export default styles
+export default styles;
 ```
 
 You can change the about-me text in the "src/gatsby-theme-byfolio/contentJSON/about-me.json" file, for example:
