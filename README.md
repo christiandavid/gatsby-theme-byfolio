@@ -33,7 +33,8 @@ git clone git@github.com:christiandavid/gatsby-theme-byfolio.git my-best-portfol
 
 cd my-best-portfolio
 
-yarn workspaces run
+# Install dependencies
+yarn
 
 # Run localhost
 yarn workspace www develop
@@ -71,10 +72,10 @@ module.exports = {
             name: `experience`,
             title: `Experience`,
             color: `#3a3d98`,
-            link: ``
+            link: ``,
           },
           { name: `skills`, title: `Skills`, color: `#d52d43`, link: `` },
-          { name: `aboutMe`, title: `About Me`, color: `#fff`, link: `` }
+          { name: `aboutMe`, title: `About Me`, color: `#fff`, link: `` },
         ],
         email: `christian@davidibarguen.com`,
         social: {
@@ -83,7 +84,7 @@ module.exports = {
           gitHub: `christiandavid`,
           stackOverflow: `967956/christian-david`,
           linkedIn: `in/christianibarguen/`,
-          resumeInPdf: `/CV-19.pdf` // url or local link
+          resumeInPdf: `/CV-19.pdf`, // url or local link
         },
         homePage: {
           availableToHire: true,
@@ -98,33 +99,33 @@ module.exports = {
             `I think one of my values is the <strong>ability to resolve problems<strong>`,
             `I like to share what I know 👨‍🏫`,
             `In my non-coding hours, I'm at the 🏋‍`,
-            `I also do design and UX work <span style='color: #27ae60;'>occasionally</span>`
-          ]
+            `I also do design and UX work <span style='color: #27ae60;'>occasionally</span>`,
+          ],
         },
         // Color for menu background
         shapeColor: {
           link: { color: "#171616", hover: "#fff" },
           shape1: {
             color: `#413f46`,
-            opacity: `0.7`
+            opacity: `0.7`,
           },
           shape2: {
             color: `#e6e5ea`,
-            opacity: `0.7`
+            opacity: `0.7`,
           },
           shape3: {
             color: `#fff`,
-            opacity: `0.7`
-          }
+            opacity: `0.7`,
+          },
         },
-        footer: `heart`
-      }
+        footer: `heart`,
+      },
     },
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         trackingIds: [
-          `UA-151335375-1` // Google Analytics / GA
+          `UA-151335375-1`, // Google Analytics / GA
         ],
         // This object gets passed directly to the gtag config command
         // This config will be shared across all trackingIds
@@ -132,19 +133,19 @@ module.exports = {
           anonymize_ip: true,
           cookie_expires: 0,
           send_page_view: true,
-          cookie_name: `christianibarguen.com`
+          cookie_name: `christianibarguen.com`,
         },
         // This object is used for configuration specific to this plugin
         pluginConfig: {
           // Puts tracking script in the head instead of the body
           head: false,
           // Setting this parameter is also optional
-          respectDNT: false
-        }
-      }
-    }
-  ]
-};
+          respectDNT: false,
+        },
+      },
+    },
+  ],
+}
 ```
 
 | Option name     | Type    | Description                                                                                                                           |
@@ -263,9 +264,9 @@ I recommend using [Coolors.co](https://coolors.co/) to select a color palette an
 You can change the color of the text and the background of each page, for example:
 
 ```js
-// src/gatsby-theme-byfolio/layout/layoutColors.css.js
-import { css } from "@emotion/core";
-import lineSvg from "../../../static/assets/line.svg";
+// src/@christiandavid/gatsby-theme-byfolio/layout/layoutColors.css.js
+import { css } from "@emotion/core"
+import lineSvg from "../../../static/assets/line.svg"
 
 const styles = css`
   .e404.layout-wrapper .layout-inner {
@@ -330,12 +331,12 @@ const styles = css`
   .e404 .btn-contact-color {
     color: #000;
   }
-`;
+`
 
-export default styles;
+export default styles
 ```
 
-You can change the about-me text in the "src/gatsby-theme-byfolio/contentJSON/about-me.json" file, for example:
+You can change the about-me text in the "src//@christiandavid/gatsby-theme-byfolio/contentJSON/about-me.json" file, for example:
 
 ```json
 [

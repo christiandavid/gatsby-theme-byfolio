@@ -33,7 +33,8 @@ git clone git@github.com:christiandavid/gatsby-theme-byfolio.git my-best-portfol
 
 cd my-best-portfolio
 
-yarn workspaces run
+# Install dependencies
+yarn
 
 # Run localhost
 yarn workspace www develop
@@ -263,7 +264,7 @@ I recommend using [Coolors.co](https://coolors.co/) to select a color palette an
 You can change the color of the text and the background of each page, for example:
 
 ```js
-// src/gatsby-theme-byfolio/layout/layoutColors.css.js
+// src/@christiandavid/gatsby-theme-byfolio/layout/layoutColors.css.js
 import { css } from "@emotion/core"
 import lineSvg from "../../../static/assets/line.svg"
 
@@ -335,7 +336,7 @@ const styles = css`
 export default styles
 ```
 
-You can change the about-me text in the "src/gatsby-theme-byfolio/contentJSON/about-me.json" file, for example:
+You can change the about-me text in the "src//@christiandavid/gatsby-theme-byfolio/contentJSON/about-me.json" file, for example:
 
 ```json
 [

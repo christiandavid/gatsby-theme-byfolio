@@ -1,0 +1,13 @@
+.cache
+package.json
+package-lock.json
+yarn.lock
+public
+www/public
+www/package.json
+www/package-lock.json
+www/yarn.lock
+@christiandavid/gatsby-theme-byfolio/public
+@christiandavid/gatsby-theme-byfolio/package.json
+@christiandavid/gatsby-theme-byfolio/package-lock.json
+@christiandavid/gatsby-theme-byfolio/yarn.lock
