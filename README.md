@@ -6,7 +6,9 @@
 
 Initially this was a personal portfolio made in GatsbyJs, now it's a Gatsby theme available to anyone who wants to tell their work history focusing only on the content.
 
-![Gatsby Portfolio](https://raw.githubusercontent.com/christiandavid/gatsby-theme-byfolio/dev/%40christiandavid/gatsby-theme-byfolio/readme-files/Byfolio.jpg)
+![Gatsby Portfolio](https://raw.githubusercontent.com/christiandavid/gatsby-theme-byfolio/dev/readme-files/Byfolio.jpg)
+
+![Portfolio](https://raw.githubusercontent.com/christiandavid/gatsby-theme-byfolio/dev/readme-files/portfolio.gif)
 
 - [Installation](#installation)
 - [Configuration](#configuration)
@@ -21,27 +23,29 @@ Initially this was a personal portfolio made in GatsbyJs, now it's a Gatsby them
 ## Installation
 
 ```sh
-npm install --save @christiandavid/gatsby-theme-byfolio
+mkdir portfolio && cd portfolio
+yarn init -y
+yarn add react react-dom gatsby @christiandavid/gatsby-theme-byfolio
 ```
 
-### With `git clone`
+Create gatsby-config.js file and load the plugin
 
-You can also clone this repository which contains the information of my portfolio
+```js
+// gatsby-config.js
+module.exports = {
+  plugins: [
+    {
+      resolve: `@christiandavid/gatsby-theme-byfolio`,
+    },
+  ],
+}
+```
 
 ```sh
-git clone git@github.com:christiandavid/gatsby-theme-byfolio.git my-best-portfolio
-
-cd my-best-portfolio
-
-# Install dependencies
-yarn
-
-# Run localhost
-yarn workspace www develop
-
-# Build your Gatsby site
-yarn workspace www build
+gatsby develop
 ```
+
+In your brower load [localhost:8000](http://localhost:8000/)
 
 ## Configuration
 
@@ -173,59 +177,95 @@ module.exports = {
 This theme generates pages based on Markdown files in the `path`/experience directory. Your Markdown files should contain some frontmatter defining their company, logo, etc.
 All company logos must be relative to `imagesPath`/companies directory.
 All Skills logos must be relative to `imagesPath`/skills directory.
-All layout images must be relative to company directory, for example: `imagesPath`/companies/acef
+All layout images must be relative to company directory, for example: `imagesPath`/companies/vlooping
 
 ### Important
 
 For each Skill you must add the logo of the Framework, library or program, with a resolution of **width: 500px, height: 500px**, in the src/images/skills/ directory I leave several logos, **only Skills logos that I own are present, if the logo you need does not appear you must create it**.
 
-Layout number is for image animation you can select from 1 to 5
+Layout number is for image animation you can select from 1 to 5, **please do not forget to add the images "images/companies/vlooping.png, images/skills/html5.png, images/skills/react.png, images/companies/vlooping/vlooping.png" to run the following example**
 
 ```yaml
 ---
 title: ""
-company: "ACEF (Colombian Association of Finance Executives)"
-logo: ../images/companies/acef.png
-jobTitle: "Frontend - Backend Developer"
+company: "Company Name"
+logo: ../images/companies/vlooping.png
+jobTitle: "My job position"
 skills:
   [
-    { title: "HTML 4", image: ../images/skills/html4.png },
-    { title: "CSS 2", image: ../images/skills/css2.png },
-    { title: "Apache", image: ../images/skills/apache.png },
+    { title: "HTML 5", image: ../images/skills/html5.png },
+    { title: "HTML 5", image: ../images/skills/react.png },
   ]
 images:
   [
     {
-      title: "Achievements",
-      description: "In Acef I had some interesting challenges, one of them was to get the emails with event information reached the inbox and not the SPAM folder.",
+      title: "Layout 4",
+      description: "Description text for layout 4.",
       layout: "4",
       files:
         [
-          { image: ../images/companies/common/codescreen2.jpg },
-          { image: ../images/companies/common/codescreen1.jpg },
-          { image: ../images/companies/acef.png },
+          { image: ../images/companies/vlooping/vlooping.png },
+          { image: ../images/companies/vlooping/vlooping.png },
+          { image: ../images/companies/vlooping/vlooping.png },
         ],
     },
     {
-      title: "Emails and CMS",
-      description: "I got the messages to have a good reputation in SPAM filters by following the standards and rules allowing the messages to reach the inbox, I also developed a CMS.",
+      title: "Layout 1",
+      description: "Description text for layout 1.",
       layout: "1",
       files:
         [
-          { image: ../images/companies/acef/evaluacion.jpg },
-          { image: ../images/companies/acef/database.jpg },
-          { image: ../images/companies/acef/outlook.png },
+          { image: ../images/companies/vlooping/vlooping.png },
+          { image: ../images/companies/vlooping/vlooping.png },
+          { image: ../images/companies/vlooping/vlooping.png },
+        ],
+    },
+    {
+      title: "Layout 2",
+      description: "Description text for layout 2.",
+      layout: "2",
+      files:
+        [
+          { image: ../images/companies/vlooping/vlooping.png },
+          { image: ../images/companies/vlooping/vlooping.png },
+          { image: ../images/companies/vlooping/vlooping.png },
+          { image: ../images/companies/vlooping/vlooping.png },
+          { image: ../images/companies/vlooping/vlooping.png },
+        ],
+      caption: "New Message",
+    },
+    {
+      title: "Layout 3",
+      description: "Description text for layout 1.",
+      layout: "3",
+      files:
+        [
+          { image: ../images/companies/vlooping/vlooping.png },
+          { image: ../images/companies/vlooping/vlooping.png },
+          { image: ../images/companies/vlooping/vlooping.png },
+          { image: ../images/companies/vlooping/vlooping.png },
+        ],
+    },
+    {
+      title: "Layout 5",
+      description: "Description text for layout 5.",
+      layout: "5",
+      files:
+        [
+          { image: ../images/companies/vlooping/vlooping.png },
+          { image: ../images/companies/vlooping/vlooping.png },
+          { image: ../images/companies/vlooping/vlooping.png },
         ],
     },
   ]
-dateFrom: "2006-03-01"
-dateTo: "2007-06-01"
+dateFrom: "2015-12-01"
+dateTo: "2019-12-01"
 ---
-- Direction of the marketing and communications area oriented to the promotion of events and training through mass emails
-- Design of the graphic interface and creation of CMS for the corporate website
-- Implementation of email receptions in more than 100,000 emails per day
-- DBA role and in charge of the administration of the servers
-- Preparation of user manuals for the system
+- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+- Contrary to popular belief, Lorem Ipsum is not simply random text
+- It is a long established fact that a reader will be distracted by the readable content of a page
+- There are many variations of passages of Lorem Ipsum available
+- The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested
 ```
 
 ### Skills
@@ -336,7 +376,7 @@ const styles = css`
 export default styles
 ```
 
-You can change the about-me text in the "src//@christiandavid/gatsby-theme-byfolio/contentJSON/about-me.json" file, for example:
+You can change the about-me text in the "src/@christiandavid/gatsby-theme-byfolio/contentJSON/about-me.json" file, for example:
 
 ```json
 [
