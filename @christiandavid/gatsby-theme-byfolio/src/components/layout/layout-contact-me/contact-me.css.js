@@ -55,6 +55,7 @@ const styles = {
       }
     }
     .btn-contactme-close {
+      pointer-events: none;
       font-size: 2em;
       position: absolute;
       top: 1.25em;
@@ -68,6 +69,9 @@ const styles = {
       ${media40em} {
         font-size: 1.25em;
       }
+    }
+    .contactme-open .btn-contactme-close {
+      pointer-events: auto;
     }
     .contactme-open {
       pointer-events: auto;
