@@ -9,6 +9,7 @@ const styles = {
   pageContainer: css`
     margin: 0px auto;
     padding: 1vmin 4em 0;
+    flex: auto;
   `,
 }
 

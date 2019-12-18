@@ -3,6 +3,7 @@ import { css } from "@emotion/core"
 const styles = css`
   html {
     box-sizing: border-box;
+    overflow-y: auto;
   }
   *,
   *::after,
@@ -43,13 +44,35 @@ const styles = css`
       font-size: 100%;
     }
   }
-  .copy {
-    background-color: #282b2f;
-    color: #fff;
-    float: right;
-    margin: 13px;
+  .pgContainer {
+    position: relative;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .pgContent {
+    margin-bottom: 34.5px;
+    box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.5);
+  }
+  .pgContent,
+  .tl-edges,
+  .tl-wrapper,
+  .layout-wrapper,
+  .page,
+  .layout-inner {
+    display: flex;
+    flex: auto;
+  }
+  .tl-wrapper {
+    flex-direction: column;
+  }
+  .copy {
+    color: #fff;
+    padding: 9px 13px 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 34.5px;
   }
   .copy .heart {
     margin: 2px 4px;
@@ -82,9 +105,8 @@ const styles = css`
     float: left;
   }
   .layout-wrapper {
-    min-height: 100vh;
+    min-height: 100%;
     display: flex;
-    box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.5);
   }
   .layout-inner {
     width: 100%;
@@ -121,6 +143,8 @@ const styles = css`
   }
   .bgPageColor {
     color: #282b2f;
+    position: absolute;
+    bottom: 0;
   }
 `
 

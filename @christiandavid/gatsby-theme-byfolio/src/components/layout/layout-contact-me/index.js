@@ -124,7 +124,7 @@ const LayoutContactMe = ({ children, bgClassName }) => {
           </button>
           <div className="contactme-container">
             <div css={styles.contactMe}>
-              Let's Make Somethign Great Together
+              Let's Make Something Great Together
             </div>
             <div className="contactme-info">
               <p>Get in touch with me on</p>

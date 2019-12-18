@@ -127,7 +127,7 @@ const styles = {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    min-height: 100vh;
+    min-height: 100%;
     background-color: #fff;
     background-repeat: no-repeat;
     background-position: 50% 10em;
@@ -137,10 +137,10 @@ const styles = {
     margin-bottom: 1.45rem;
   `,
   pageContainer: css`
-    margin: "0 auto";
-    padding: "0px 1.0875rem 1.45rem";
+    margin: 0 auto;
+    padding: 0px 1.0875rem 1.45rem;
     padding-top: 0;
-    min-height: 100vh;
+    min-height: 100%;
   `,
   contactContactme: css`
     position: absolute;

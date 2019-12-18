@@ -5,8 +5,7 @@ const styles = {
     color: #000;
   `,
   dataSection: css`
-    min-height: 600px;
-    height: 100vh;
+    height: 100%;
     color: #fff;
   `,
   dataContainer: css`
