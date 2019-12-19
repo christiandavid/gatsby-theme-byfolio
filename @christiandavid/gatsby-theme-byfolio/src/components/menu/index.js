@@ -241,6 +241,16 @@ const Menu = ({
     }
   })
 
+  // Generates the menu
+  let menu = Object.entries(defaultLinks).map(([_key, value]) =>
+    !Array.isArray(value)
+      ? menuGenerator(value)
+      : value.map(({ title, color, link: url }) =>
+          menuGenerator({ title, color, url })
+        )
+  )
+  menu = [].concat(...menu)
+
   return (
     <main css={mainClass}>
       <div>
@@ -267,18 +277,7 @@ const Menu = ({
           </div>
         </button>
         <div css={[styles.globalMenu, linkColor]} data-test="menulinks">
-          <div>
-            {// Generates the menu
-            Object.entries(defaultLinks)
-              .map(([_key, value]) => {
-                return !Array.isArray(value)
-                  ? menuGenerator(value)
-                  : value.map(({ title, color, link: url }) =>
-                      menuGenerator({ title, color, url })
-                    )
-              })
-              .flat()}
-          </div>
+          <div>{menu}</div>
         </div>
         {svgIcos(shapeColor)}
       </div>
