@@ -16,7 +16,6 @@ Initially this was a personal portfolio made in GatsbyJs, now it's a Gatsby them
 - [Skills](#skills)
 - [Component shadowing](#component-shadowing)
 - [Examples](#examples)
-- [Deploy](#deploy)
 - [Authors](#authors)
 - [Credits](#credits)
 
@@ -373,10 +372,6 @@ You can change the about-me text in the "src/@christiandavid/gatsby-theme-byfoli
 - [My Portfolio](https://christianibarguen.com)
 
 Are you using this theme in your own project? Submit a PR with your website added to this list!
-
-## Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/christiandavid/gatsby-theme-byfolio)
 
 ## Authors
 
