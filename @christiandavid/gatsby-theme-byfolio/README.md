@@ -1,6 +1,6 @@
 # gatsby-theme-byfolio
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/christiandavid/gatsby-theme-byfolio/@christiandavid/gatsby-theme-byfolio/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/christiandavid/gatsby-theme-byfolio/blob/dev/LICENSE)
 [![CircleCI](https://circleci.com/gh/christiandavid/gatsby-theme-byfolio.svg?style=svg)](https://circleci.com/gh/christiandavid/gatsby-theme-byfolio)
 ![Twitter Follow](https://img.shields.io/twitter/follow/iChristianDavid?style=social)
 
@@ -381,8 +381,6 @@ Are you using this theme in your own project? Submit a PR with your website adde
 
 Special thanks to:
 
-[GatsbyJs](https://www.gatsbyjs.org/)
-
-[Codrops](https://tympanus.net/codrops/)
-
-[Fontawesome](https://fontawesome.com/license)
+- [GatsbyJs](https://www.gatsbyjs.org/)
+- [Codrops](https://tympanus.net/codrops/)
+- [Fontawesome](https://fontawesome.com/license)
