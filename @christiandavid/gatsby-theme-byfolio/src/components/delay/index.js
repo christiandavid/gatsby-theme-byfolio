@@ -5,9 +5,9 @@ import styles from "./delay.css"
 /**
  * Delay the component load for the specified time
  *
- * @param {integer} children
- * @param {integer} cb callback funtion
- * @param {integer} showLoadingAnimation show loading animation
+ * @param {ReactNode} children
+ * @param {function} cb callback funtion
+ * @param {boolean} showLoadingAnimation show loading animation
  * @param {integer} wait time to wait in seconds
  */
 const Delay = ({
