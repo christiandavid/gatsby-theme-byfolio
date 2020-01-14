@@ -92,15 +92,22 @@ const Slideshow = ({ images, children }) => {
       site {
         siteMetadata {
           basePath
+          menuLinks {
+            color
+            name
+          }
         }
       }
     }
   `
   const {
     site: {
-      siteMetadata: { basePath },
+      siteMetadata: { basePath, menuLinks },
     },
   } = useStaticQuery(siteQuery)
+
+  const experienceLink = menuLinks.find(({ name }) => name === "experience")
+  const bgColor = experienceLink ? experienceLink.color : "#3a3d98"
 
   return (
     <>
@@ -122,7 +129,7 @@ const Slideshow = ({ images, children }) => {
               css={styles.arrowBack}
               direction="right"
               data-test="goback"
-              bg="#3a3d98"
+              bg={bgColor}
               style={{ opacity: 1 }}
             >
               <svg css={styles.iconJob}>
