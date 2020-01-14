@@ -24,6 +24,9 @@ const styles = css`
     background: #282b2f;
     overflow: hidden;
     min-height: 100vh;
+    min-height: -moz-available;
+    min-height: -webkit-fill-available;
+    min-height: fill-available;
     letter-spacing: -0.035em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -49,6 +52,9 @@ const styles = css`
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    min-height: -moz-available;
+    min-height: -webkit-fill-available;
+    min-height: fill-available;
   }
   .pgContent {
     margin-bottom: 34.5px;
