@@ -370,6 +370,7 @@ You can change the about-me text in the "src/@christiandavid/gatsby-theme-byfoli
 ## Examples
 
 - [My Portfolio](https://christianibarguen.com)
+- [Mario Gómez Portfolio](http://mariogmz.com)
 
 Are you using this theme in your own project? Submit a PR with your website added to this list!
 
