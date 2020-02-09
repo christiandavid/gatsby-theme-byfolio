@@ -8,6 +8,7 @@ module.exports = ({
   basePath = ``,
   path = `${__dirname}/src/`,
   imagesPath = `${__dirname}/src/images/`,
+  iconFile = `${__dirname}/src/images/icon.png`,
   typographyPath = `${__dirname}/src/utils/typography`,
   siteTitle = `Portfolio`,
   siteUrl = `https://www.christianibarguen.com`,
@@ -122,7 +123,7 @@ module.exports = ({
         background_color: `#000`,
         theme_color: `#fff`,
         display: `standalone`,
-        icon: `${imagesPath}icon.png`,
+        icon: iconFile,
       },
     },
     {

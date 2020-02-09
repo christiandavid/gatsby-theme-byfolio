@@ -6,6 +6,7 @@ module.exports = {
         basePath: ``,
         path: `src/`,
         imagesPath: `src/images/`,
+        iconFile: `src/images/icon.png`,
         siteTitle: `Portfolio`,
         siteUrl: `https://www.christianibarguen.com`,
         siteName: `Christian David Ibarguen`,

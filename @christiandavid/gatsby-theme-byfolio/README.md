@@ -60,6 +60,7 @@ module.exports = {
         basePath: ``,
         path: `src/`,
         imagesPath: `src/images/`,
+        iconFile: `src/images/icon.png`,
         siteTitle: `Portfolio`,
         siteUrl: `https://www.christianibarguen.com`,
         siteName: `Christian David Ibarguen`,
@@ -133,6 +134,7 @@ module.exports = {
 | basePath        | string  | Where should the site be served from? /porfolio will change all paths to start with /porfolio                                         |
 | path            | string  | Place where the files are stored, for example: `src/`                                                                                 |
 | imagesPath      | string  | Place where the images files are stored, for example: `src/images/`                                                                   |
+| iconFile        | string  | Provides the icon path for the gatsby-plugin-manifest plugin                                                                          |
 | typographyPath  | string  | Place where the file that defines your website’s typography configuration is located                                                  |
 | siteTitle       | string  | The main title for the website, used in the `<title>` element                                                                         |
 | siteUrl         | string  | The portfolio url, example: `https://christianibarguen.com`                                                                           |
