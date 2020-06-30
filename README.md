@@ -44,7 +44,7 @@ module.exports = {
 gatsby develop
 ```
 
-In your brower load [localhost:8000](http://localhost:8000/)
+In your browser load [localhost:8000](http://localhost:8000/)
 
 ## Configuration
 
@@ -131,7 +131,7 @@ module.exports = {
 
 | Option name     | Type    | Description                                                                                                                           |
 | --------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| basePath        | string  | Where should the site be served from? /porfolio will change all paths to start with /porfolio                                         |
+| basePath        | string  | Where should the site be served from? /portfolio will change all paths to start with /portfolio                                         |
 | path            | string  | Place where the files are stored, for example: `src/`                                                                                 |
 | imagesPath      | string  | Place where the images files are stored, for example: `src/images/`                                                                   |
 | iconFile        | string  | Provides the icon path for the gatsby-plugin-manifest plugin                                                                          |
