@@ -1,5 +1,5 @@
 import React from "react"
-import { render, waitForElement } from "@testing-library/react"
+import { render, waitFor } from "@testing-library/react"
 import Delay from "../index"
 
 describe("Delay component", () => {
@@ -20,7 +20,7 @@ describe("Delay component", () => {
         <div>{text}</div>
       </Delay>
     )
-    await waitForElement(() => getByText(text))
+    await waitFor(() => getByText(text))
     expect(callback).toHaveBeenCalled()
   })
 
@@ -31,7 +31,7 @@ describe("Delay component", () => {
         <div>{text}</div>
       </Delay>
     )
-    await waitForElement(() => getByText(text))
+    await waitFor(() => getByText(text))
     expect(getByText(text)).toHaveTextContent(text)
   })
 })
