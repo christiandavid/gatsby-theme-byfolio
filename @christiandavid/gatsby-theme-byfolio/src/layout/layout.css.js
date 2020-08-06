@@ -42,6 +42,9 @@ const styles = css`
   svg:not(:root) {
     overflow: hidden;
   }
+  svg {
+    pointer-events: none;
+  }
   @media only screen and (max-width: 480px) {
     html {
       font-size: 100%;
