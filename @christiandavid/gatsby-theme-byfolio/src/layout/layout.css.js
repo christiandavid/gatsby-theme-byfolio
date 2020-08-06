@@ -52,9 +52,6 @@ const styles = css`
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    min-height: -moz-available;
-    min-height: -webkit-fill-available;
-    min-height: fill-available;
   }
   .pgContent {
     margin-bottom: 34.5px;

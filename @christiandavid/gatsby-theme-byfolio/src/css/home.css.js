@@ -15,8 +15,7 @@ const styles = {
     height: 100%;
   `,
   dataContent: css`
-    position: relative;
-    top: 20%;
+    padding-top: 20vh;
     .Typewriter {
       font-size: 1.5em;
     }
