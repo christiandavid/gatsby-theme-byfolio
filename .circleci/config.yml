@@ -3,7 +3,7 @@ jobs:
   test:
     working_directory: ~/gatsby-theme-byfolio
     docker:
-      - image: circleci/node:13.3.0
+      - image: circleci/node:13
     steps:
       - checkout
       - run:
