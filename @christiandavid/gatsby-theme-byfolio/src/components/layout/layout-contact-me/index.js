@@ -131,37 +131,39 @@ const LayoutContactMe = ({ children, bgClassName }) => {
             <div className="contactme-info">
               <p>Get in touch with me on</p>
               <p>
-                {Object.entries(social).map(([key, value]) => {
-                  const links = {
-                    gitHub: "https://github.com/",
-                    twitter: "https://twitter.com/",
-                    stackOverflow: "https://stackoverflow.com/users/",
-                    linkedIn: "https://www.linkedin.com/",
-                  }
-                  let title
-                  let ico
-                  if (key !== "resumeInPdf") {
-                    title = `${capitalize(key)} Account`
-                    ico = key.toLocaleLowerCase()
-                  } else {
-                    title = "Download my CV"
-                    ico = "cv"
-                  }
-                  return (
-                    <a
-                      key={value}
-                      target="_blank"
-                      href={`${links[key] || ""}${value}`}
-                      css={styles.whiteLink}
-                      rel="noopener noreferrer"
-                      title={title}
-                    >
-                      <svg className="icon">
-                        <use xlinkHref={`#icon-${ico}`}></use>
-                      </svg>
-                    </a>
-                  )
-                })}
+                {Object.entries(social)
+                  .filter(([_key, value]) => value != ``)
+                  .map(([key, value]) => {
+                    const links = {
+                      gitHub: "https://github.com/",
+                      twitter: "https://twitter.com/",
+                      stackOverflow: "https://stackoverflow.com/users/",
+                      linkedIn: "https://www.linkedin.com/",
+                    }
+                    let title
+                    let ico
+                    if (key !== "resumeInPdf") {
+                      title = `${capitalize(key)} Account`
+                      ico = key.toLocaleLowerCase()
+                    } else {
+                      title = "Download my CV"
+                      ico = "cv"
+                    }
+                    return (
+                      <a
+                        key={value}
+                        target="_blank"
+                        href={`${links[key] || ""}${value}`}
+                        css={styles.whiteLink}
+                        rel="noopener noreferrer"
+                        title={title}
+                      >
+                        <svg className="icon">
+                          <use xlinkHref={`#icon-${ico}`}></use>
+                        </svg>
+                      </a>
+                    )
+                  })}
               </p>
               <p>
                 Or drop me an email at{" "}

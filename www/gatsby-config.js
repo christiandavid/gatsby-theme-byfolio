@@ -44,6 +44,7 @@ module.exports = {
               worked as a software developer since 2006.`,
           typewriter: [
             `Coding is my passion 😎`,
+            `I live in Colombia 🇨🇴`,
             `I'm a 🍕 lover`,
             `I'm a pretty fast learner and always interested in learning new technologies 🤓`,
             `I think one of my values is the <strong>ability to resolve problems<strong>`,
