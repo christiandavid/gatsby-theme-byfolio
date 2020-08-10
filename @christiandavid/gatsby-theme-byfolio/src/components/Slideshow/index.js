@@ -36,14 +36,6 @@ const Slideshow = ({ images, children }) => {
     }
   }
 
-  function prevSlide() {
-    goToPrevious()
-  }
-
-  function nextSlide() {
-    goToNext()
-  }
-
   function getSlides() {
     return (
       dimentions &&
@@ -139,28 +131,30 @@ const Slideshow = ({ images, children }) => {
           </header>
           <div css={styles.slideshow} data-test="slideshow" ref={slideshow}>
             {getSlides()}
-            <nav css={styles.slideshowNav}>
-              <button
-                onClick={prevSlide}
-                css={styles.btnjob}
-                aria-label="Previous slide"
-                data-test="previous"
-              >
-                <svg className="icon">
-                  <use xlinkHref="#icon-prev"></use>
-                </svg>
-              </button>
-              <button
-                onClick={nextSlide}
-                css={styles.btnjob}
-                aria-label="Next slide"
-                data-test="next"
-              >
-                <svg className="icon">
-                  <use xlinkHref="#icon-next"></use>
-                </svg>
-              </button>
-            </nav>
+            {slidesTotal && (
+              <nav css={styles.slideshowNav}>
+                <button
+                  onClick={goToPrevious}
+                  css={styles.btnjob}
+                  aria-label="Previous slide"
+                  data-test="previous"
+                >
+                  <svg className="icon">
+                    <use xlinkHref="#icon-prev"></use>
+                  </svg>
+                </button>
+                <button
+                  onClick={goToNext}
+                  css={styles.btnjob}
+                  aria-label="Next slide"
+                  data-test="next"
+                >
+                  <svg className="icon">
+                    <use xlinkHref="#icon-next"></use>
+                  </svg>
+                </button>
+              </nav>
+            )}
             <div css={styles.gradient}></div>
           </div>
           {children}
