@@ -131,7 +131,7 @@ const Slideshow = ({ images, children }) => {
           </header>
           <div css={styles.slideshow} data-test="slideshow" ref={slideshow}>
             {getSlides()}
-            {slidesTotal && (
+            {!!slidesTotal && (
               <nav css={styles.slideshowNav}>
                 <button
                   onClick={goToPrevious}
