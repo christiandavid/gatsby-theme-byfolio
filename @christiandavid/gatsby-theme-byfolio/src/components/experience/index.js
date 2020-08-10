@@ -81,17 +81,16 @@ const Experience = ({
           node: {
             id,
             fields: { slug },
-            frontmatter: { company, logo, jobTitle, dateFrom, dateTo },
+            frontmatter: { company, logo, jobTitle, dateFrom, dateTo: dateEnd },
           },
         },
         index
       ) => {
+        const dateTo = dateEnd || dateFrom
         const years = dateFrom === dateTo ? dateFrom : `${dateFrom} - ${dateTo}`
-        let addYear = false
-        if (dateTo.slice(-1) % 3 === 0) {
-          if (currentYear !== dateTo) {
-            addYear = true
-          }
+        let showYear = false
+        if (index % 2 === 0) {
+          showYear = true
           currentYear = dateTo
         }
 
@@ -100,7 +99,7 @@ const Experience = ({
             key={id}
             css={styles.job}
             ref={jobItems.current[index]}
-            {...(addYear && { "data-year": currentYear })}
+            {...(showYear && { "data-year": currentYear })}
           >
             <AniLink
               cover
@@ -167,7 +166,7 @@ Experience.propTypes = {
           logo: PropTypes.object.isRequired,
           jobTitle: PropTypes.string.isRequired,
           dateFrom: PropTypes.string.isRequired,
-          dateTo: PropTypes.string.isRequired,
+          dateTo: PropTypes.string,
         }).isRequired,
       }).isRequired,
     }).isRequired
